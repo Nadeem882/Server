@@ -16,3 +16,16 @@ app.post("/notes", async (req,res) => {
         message :" note created"
     })
 })
+
+app.get ("/notes", async(req , res) => {
+
+    const notes = await noteModel.find({
+        //title : "title" // use findOne > to find exact title from database 
+    })
+
+    res.status(200).json({
+        message : "Notes fetched " ,
+        notes: notes
+    })
+
+})
