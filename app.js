@@ -53,3 +53,18 @@ app.patch("/notes/:id", async (req,res) => {
         message : "Notes updated successfully"
     })
 }) 
+
+app.patch("/notes2/:id", async (req,res) => {
+
+    const id = req.params.id
+    const title = req.body.title
+    //this updates title by find id
+    await noteModel.findOneAndUpdate({ _id: id },{ title : title }) 
+
+   res.status(200).json({
+        message : "Notes updated successfully"
+    })
+}) 
+
+module.exports = app
+//npx nodemon server.js
